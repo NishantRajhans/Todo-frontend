@@ -34,7 +34,7 @@ export default function SignUp() {
   const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const signupdata=await axios.post("https://todo-backend-ay8w.onrender.com/api/v1/auth/signup",{
+    const signupdata=await axios.post("https://todo-backend-server-2.onrender.com/api/v1/auth/signup",{
       FirstName:data.get('firstName'),
       LastName:data.get('lastName'),
       Email: data.get('email'),
