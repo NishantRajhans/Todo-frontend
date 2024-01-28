@@ -41,7 +41,7 @@ export default function CreteTodo() {
       navigate("/LogIn")
     }else{
       const data = new FormData(event.currentTarget);
-    const Tododata=await axios.post("https://todo-backend-server-2.onrender.com/api/v1/todo/createTodo",{
+    const Tododata=await axios.post("https://todo-backend-server-3.onrender.com/api/v1/todo/createTodo",{
       Title: data.get('title'),
       Description: data.get('description'),
     },{
