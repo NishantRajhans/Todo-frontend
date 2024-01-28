@@ -24,6 +24,8 @@ function Navbar() {
     const navigate=useNavigate()
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [firstName,setfirstName] = React.useState(null);
+  const [lastName,setlastName] = React.useState(null);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -40,6 +42,7 @@ function Navbar() {
     setAnchorElUser(null);
     if(setting=="Logout"){
         localStorage.removeItem("Token");
+        localStorage.removeItem("User");
         navigate("/LogIn")
     }
   };
@@ -86,6 +89,14 @@ function Navbar() {
     },
   });  
 
+  React.useEffect(()=>{
+    if(localStorage.getItem("User")){
+      setfirstName(localStorage.getItem("User")?.split(" ")[0][0].toUpperCase());
+      setlastName(localStorage.getItem("User")?.split(" ")[1][0].toUpperCase());
+    }else{
+      localStorage.removeItem("Token");
+    }
+  },[])
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -180,7 +191,7 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar>{localStorage.getItem("User").split(" ")[0][0].toUpperCase()}{localStorage.getItem("User").split(" ")[1][0].toUpperCase()}</Avatar>
+                <Avatar>{firstName}{lastName}</Avatar>
               </IconButton>
             </Tooltip>
             <Menu
