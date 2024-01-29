@@ -16,16 +16,17 @@ import {useNavigate} from "react-router-dom"
 import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import { purple } from '@mui/material/colors';
+import { useRecoilValue } from 'recoil';
+import { UserState } from '../recoil/user';
 
 const pages = [{title:'Create Todo',link:"/"},{title:'My Todos',link:"/AllTodo"}];
 const settings = ['Profile','Logout'];
 
 function Navbar() {
+  const User =useRecoilValue(UserState)
     const navigate=useNavigate()
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [firstName,setfirstName] = React.useState(null);
-  const [lastName,setlastName] = React.useState(null);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -90,10 +91,7 @@ function Navbar() {
   });  
 
   React.useEffect(()=>{
-    if(localStorage.getItem("User")){
-      setfirstName(localStorage.getItem("User")?.split(" ")[0][0].toUpperCase());
-      setlastName(localStorage.getItem("User")?.split(" ")[1][0].toUpperCase());
-    }else{
+    if(!localStorage.getItem("User")){
       localStorage.removeItem("Token");
     }
   },[])
@@ -191,7 +189,7 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar>{firstName}{lastName}</Avatar>
+                <Avatar>{User?.split(" ")[0][0].toUpperCase()}{User?.split(" ")[1][0].toUpperCase()}</Avatar>
               </IconButton>
             </Tooltip>
             <Menu

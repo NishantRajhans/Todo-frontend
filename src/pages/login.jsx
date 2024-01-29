@@ -12,6 +12,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { UserState } from "../recoil/user";
+import { useRecoilState } from 'recoil';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -30,6 +32,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function LogIn() {
+  const [User,setUser]=useRecoilState(UserState)
   const navigate=useNavigate()
   const handleSubmit = async(event) => {
     event.preventDefault();
@@ -43,6 +46,7 @@ export default function LogIn() {
     if(logindata.data.token!=null){
       localStorage.setItem("Token",logindata.data.token)
       localStorage.setItem("User",logindata.data.user.FirstName+" "+logindata.data.user.LastName);
+      setUser(localStorage.getItem("User"));
       navigate("/")
     }else{
       navigate("/SignUp")

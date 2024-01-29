@@ -8,10 +8,12 @@ import { Avatar } from "@mui/material";
 import { deepOrange } from '@mui/material/colors';
 import { useNavigate } from "react-router-dom";
 import { TodoData } from "../recoil/todo";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { UserState } from "../recoil/user";
 const AllTodo = () => {
   const navigate=useNavigate()
   const [Todo, setTodo] =useRecoilState(TodoData);
+  const User=useRecoilValue(UserState);
   const getTodo = async () => {
      if(localStorage.getItem("Token")!==null){
       const tododata = await axios.get(
@@ -47,7 +49,7 @@ const AllTodo = () => {
     <div className="topdiv">
         { Todo?.map((todo) => (
           <div className="todobody" key={todo.title}>
-            <Avatar sx={{ bgcolor: deepOrange[500] }} className="avatar">{todo.Creater?.FirstName[0].toUpperCase()}{todo.Creater?.LastName[0].toUpperCase()}</Avatar>
+            <Avatar sx={{ bgcolor: deepOrange[500] }} className="avatar">{User?.split(" ")[0][0].toUpperCase()}{User?.split(" ")[1][0].toUpperCase()}</Avatar>
             <div className="todocontent">
               <div className="todotitle">{todo.Title}</div>
               <div className="tododes">{todo.Description}</div>
