@@ -17,7 +17,7 @@ const AllTodo = () => {
   const getTodo = async () => {
      if(localStorage.getItem("Token")!==null){
       const tododata = await axios.get(
-        "https://todo-backend-sa39.onrender.com/api/v1/todo/getAllTodo",
+        "http://localhost:3000/api/v1/todo/getAllTodo",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("Token")}`,
@@ -25,11 +25,10 @@ const AllTodo = () => {
         }
       );
       setTodo(tododata.data.todo);
-      console.log(tododata.data);
      }else navigate("/LogIn")
   };
   const handeldelete=async(id)=>{
-    const response = await axios.delete(`https://todo-backend-sa39.onrender.com/api/v1/todo/deleteTodo/${id}`,{
+    const response = await axios.delete(`http://localhost:3000/api/v1/todo/deleteTodo/${id}`,{
       headers: {
         Authorization: `Bearer ${localStorage.getItem("Token")}`,
       },
@@ -48,16 +47,16 @@ const AllTodo = () => {
   return (
     <div className="topdiv">
         { Todo?.map((todo) => (
-          <div className="todobody" key={todo.title}>
+          <div className="todobody" key={todo?.title}>
             <Avatar sx={{ bgcolor: deepOrange[500] }} className="avatar">{User?.split(" ")[0][0].toUpperCase()}{User?.split(" ")[1][0].toUpperCase()}</Avatar>
             <div className="todocontent">
-              <div className="todotitle">{todo.Title}</div>
-              <div className="tododes">{todo.Description}</div>
+              <div className="todotitle">{todo?.Title}</div>
+              <div className="tododes">{todo?.Description}</div>
             </div>
-            <Button variant="outlined" startIcon={<DeleteIcon />} onClick={()=>{handeldelete(todo._id)}}>
+            <Button variant="outlined" startIcon={<DeleteIcon />} onClick={()=>{handeldelete(todo?._id)}}>
               Delete
             </Button>
-            <Button variant="outlined" startIcon={<EditIcon/>} onClick={()=>{handeledit(todo._id)}}>
+            <Button variant="outlined" startIcon={<EditIcon/>} onClick={()=>{handeledit(todo?._id)}}>
               Edit
             </Button>
           </div>

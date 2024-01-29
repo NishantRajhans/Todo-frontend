@@ -50,7 +50,7 @@ export default function EditTodo() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const Tododata = await axios.put(
-      `https://todo-backend-sa39.onrender.com/api/v1/todo/updateTodo/${id}`,
+      `http://localhost:3000/api/v1/todo/updateTodo/${id}`,
       {
         Title: data.get("title"),
         Description: data.get("description"),
