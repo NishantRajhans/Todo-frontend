@@ -23,6 +23,7 @@ const AllTodo = () => {
         }
       );
       setTodo(tododata.data.todo);
+      console.log(tododata.data);
      }else navigate("/LogIn")
   };
   const handeldelete=async(id)=>{
