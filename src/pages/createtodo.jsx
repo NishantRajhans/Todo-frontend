@@ -41,7 +41,7 @@ export default function CreteTodo() {
       navigate("/LogIn")
     }else{
       const data = new FormData(event.currentTarget);
-    const Tododata=await axios.post("http://localhost:3000/api/v1/todo/createTodo",{
+    const Tododata=await axios.post("https://todo-frontend-livid.vercel.app/api/v1/todo/createTodo",{
       Title: data.get('title'),
       Description: data.get('description'),
     },{

@@ -17,7 +17,7 @@ const AllTodo = () => {
   const getTodo = async () => {
      if(localStorage.getItem("Token")!==null){
       const tododata = await axios.get(
-        "http://localhost:3000/api/v1/todo/getAllTodo",
+        "https://todo-frontend-livid.vercel.app/api/v1/todo/getAllTodo",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("Token")}`,
@@ -28,7 +28,7 @@ const AllTodo = () => {
      }else navigate("/LogIn")
   };
   const handeldelete=async(id)=>{
-    const response = await axios.delete(`http://localhost:3000/api/v1/todo/deleteTodo/${id}`,{
+    const response = await axios.delete(`https://todo-frontend-livid.vercel.app/api/v1/todo/deleteTodo/${id}`,{
       headers: {
         Authorization: `Bearer ${localStorage.getItem("Token")}`,
       },

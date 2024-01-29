@@ -34,7 +34,7 @@ export default function SignUp() {
   const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const signupdata=await axios.post("http://localhost:3000/api/v1/auth/signup",{
+    const signupdata=await axios.post("https://todo-frontend-livid.vercel.app/api/v1/auth/signup",{
       FirstName:data.get('firstName'),
       LastName:data.get('lastName'),
       Email: data.get('email'),

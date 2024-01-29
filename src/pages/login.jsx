@@ -38,7 +38,7 @@ export default function LogIn() {
     event.preventDefault();
     try{
       const data = new FormData(event.currentTarget);
-    const logindata=await axios.post("http://localhost:3000/api/v1/auth/login",{
+    const logindata=await axios.post("https://todo-frontend-livid.vercel.app/api/v1/auth/login",{
       Email: data.get('email'),
       Password: data.get('password'),
     })
