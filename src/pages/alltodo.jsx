@@ -15,7 +15,7 @@ const AllTodo = () => {
   const getTodo = async () => {
      if(localStorage.getItem("Token")!==null){
       const tododata = await axios.get(
-        "https://todo-backend-server-3.onrender.com/api/v1/todo/getAllTodo",
+        "https://todo-backend-sa39.onrender.com/api/v1/todo/getAllTodo",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("Token")}`,
@@ -26,7 +26,7 @@ const AllTodo = () => {
      }else navigate("/LogIn")
   };
   const handeldelete=async(id)=>{
-    const response = await axios.delete(`https://todo-backend-server-3.onrender.com/api/v1/todo/deleteTodo/${id}`,{
+    const response = await axios.delete(`https://todo-backend-sa39.onrender.com/api/v1/todo/deleteTodo/${id}`,{
       headers: {
         Authorization: `Bearer ${localStorage.getItem("Token")}`,
       },
