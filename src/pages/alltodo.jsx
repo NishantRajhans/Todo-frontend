@@ -13,7 +13,7 @@ import { UserState } from "../recoil/user";
 const AllTodo = () => {
   const navigate=useNavigate()
   const [Todo, setTodo] =useRecoilState(TodoData);
-  const User=useRecoilValue(UserState);
+  const [User,setUser]=useRecoilState(UserState);
   const getTodo = async () => {
      if(localStorage.getItem("Token")!==null){
       const tododata = await axios.get(

@@ -16,14 +16,14 @@ import {useNavigate} from "react-router-dom"
 import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import { purple } from '@mui/material/colors';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { UserState } from '../recoil/user';
 
 const pages = [{title:'Create Todo',link:"/"},{title:'My Todos',link:"/AllTodo"}];
 const settings = ['Profile','Logout'];
 
 function Navbar() {
-  const User =useRecoilValue(UserState)
+  const [User,setUser]=useRecoilState(UserState);
     const navigate=useNavigate()
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
