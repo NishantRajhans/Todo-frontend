@@ -4,12 +4,10 @@
     flex-direction:column;
 }
 .todobody{
-    margin: 0,auto;
+    margin:2rem;
     display: flex;
     align-items: center;
     justify-content:space-around;
-    margin-top:3rem;
-    margin-bottom: 3rem;
     border: 2px solid rgb(106, 118, 175);
     padding: 1rem;
     width: 80%;
