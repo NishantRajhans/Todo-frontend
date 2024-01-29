@@ -216,7 +216,7 @@ function Navbar() {
             </Menu>
           </Box>:
             <Stack spacing={2} direction="row">
-            <ColorButton variant="contained" onClick={()=>{navigate('/SignUp')}}>Sing Up</ColorButton>
+            <ColorButton variant="contained" onClick={()=>{navigate('/SignUp')}}>Sign Up</ColorButton>
             <BootstrapButton variant="contained" disableRipple onClick={()=>{navigate('/LogIn')}}>
               LogIn
             </BootstrapButton>
