@@ -18,6 +18,7 @@ import Stack from '@mui/material/Stack';
 import { purple } from '@mui/material/colors';
 import { useRecoilState } from 'recoil';
 import { UserState } from '../recoil/user';
+import toast, { Toaster } from 'react-hot-toast';
 
 const pages = [{title:'Create Todo',link:"/"},{title:'My Todos',link:"/AllTodo"}];
 const settings = ['Profile','Logout'];
@@ -42,6 +43,7 @@ function Navbar() {
   const handleCloseUserMenu = (setting) => {
     setAnchorElUser(null);
     if(setting=="Logout"){
+      toast.success("User logged out successfully")
         localStorage.removeItem("Token");
         localStorage.removeItem("User");
         navigate("/LogIn")
