@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { TodoData } from "../recoil/todo";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { UserState } from "../recoil/user";
+import toast, { Toaster } from 'react-hot-toast';
 const AllTodo = () => {
   const navigate=useNavigate()
   const [Todo, setTodo] =useRecoilState(TodoData);
@@ -34,8 +35,7 @@ const AllTodo = () => {
       },
     })
     setTodo(Todo.filter((todo)=>todo._id!=id))
-    alert(response.data.message)
-    
+    toast.success(response.data.message)
   }
   const handeledit=(id)=>{
     navigate(`/EditTodo/${id}`)

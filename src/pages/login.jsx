@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { UserState } from "../recoil/user";
 import { useRecoilState } from 'recoil';
+import toast, { Toaster } from 'react-hot-toast';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -42,7 +43,7 @@ export default function LogIn() {
       Email: data.get('email'),
       Password: data.get('password'),
     })
-    alert(logindata.data.message)
+    toast.success(logindata.data.message)
     if(logindata.data.token!=null){
       localStorage.setItem("Token",logindata.data.token)
       localStorage.setItem("User",logindata.data.user.FirstName+" "+logindata.data.user.LastName);

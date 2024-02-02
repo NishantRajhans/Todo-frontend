@@ -7,9 +7,11 @@ import AllTodo from"./pages/alltodo"
 import CreateTodo from "./pages/createtodo"
 import Navbar from './components/Navbar';
 import EditTodo from './pages/edittodo';
+import toast, { Toaster } from 'react-hot-toast';
 function App() {
   return (
     <div className="App">
+      <Toaster/>
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<CreateTodo></CreateTodo>}></Route>

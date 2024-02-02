@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { TodoData } from "../recoil/todo";
 import { useSetRecoilState } from "recoil";
+import toast, { Toaster } from 'react-hot-toast';
 
 function Copyright(props) {
   return (
@@ -52,7 +53,7 @@ export default function CreteTodo() {
   )
   console.log(Tododata.data.data)
   setTodo((todo)=>[...todo,Tododata.data.data])
-    alert(Tododata.data.message)
+    toast.success(Tododata.data.message)
     }
   };
   return (

@@ -12,6 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -40,7 +41,7 @@ export default function SignUp() {
       Email: data.get('email'),
       Password: data.get('password'),
     })
-    alert(signupdata.data.message)
+    toast.success(signupdata.data.message)
     if(signupdata.data.message!=="user already exist")navigate("/LogIn")
   };
 

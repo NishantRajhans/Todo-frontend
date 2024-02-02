@@ -14,6 +14,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {TodoData} from "../recoil/todo"
 import { useRecoilState } from "recoil";
+import toast, { Toaster } from 'react-hot-toast';
 
 function Copyright(props) {
   return (
@@ -61,7 +62,7 @@ export default function EditTodo() {
         },
       }
     );
-    alert(Tododata.data.message);
+    toast.success(Tododata.data.message);
     navigate("/AllTodo");
   };
   return (
